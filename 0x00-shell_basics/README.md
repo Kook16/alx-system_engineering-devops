@@ -1,2 +1,2 @@
 #!/bin/bash
-Prints the absolute path name of the current working directory
+List of shell commands
