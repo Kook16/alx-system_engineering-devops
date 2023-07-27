@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#  This Bash script displays Best School 10 times.
+
+for item in *
+do
+    item_formated=$(echo "$item" | cut -d'-' -f2-)
+    echo "$item_formated"
+done
