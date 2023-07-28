@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# commnd that prints the pid
+echo "$$"
