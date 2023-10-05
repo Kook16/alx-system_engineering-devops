@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# a Bash script that displays listening ports:
+# That only shows listening sockets
+# That shows the PID and name of the program to which each socket belongs
+
+if [ "$#" -eq 1 ];
+then
+    ping -c 5 "$1"
+else
+    echo 'Usage: 5-is_the_host_on_the_network {IP_ADDRESS}'
+fi
