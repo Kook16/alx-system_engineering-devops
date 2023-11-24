@@ -1,5 +1,5 @@
 # Using Puppet, install flask from pip3
-package { 'flask':
+package { 'Werkzeug':
   ensure   => '2.2.2',
   provider => 'pip3',
 }
