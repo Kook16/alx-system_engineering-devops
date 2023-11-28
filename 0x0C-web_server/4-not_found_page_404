@@ -15,4 +15,4 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 echo "error_page 404 /404.html;" | sudo tee -a /etc/nginx/sites-available/default
 
 # Reload Nginx to apply the changes
-sudo service nginx reload
+sudo service nginx restart
