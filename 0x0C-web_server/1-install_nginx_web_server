@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# install the nginx software
+sudo apt-get -y upgrade
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Nginx should list on port 80
+sudo sed -i 's/^\(listen 80;\)/\1' /etc/nginx/site-avaiable/default
+
+
+# create hmtl page with 'hello world'
+echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Hello World!" | sudo tee /usr/share/nginx/html.index
+
+# restart nginx
+sudo service nginx restart
