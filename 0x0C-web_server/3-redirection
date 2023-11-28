@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
+# ---
 
-# Install the nginx software
+# install the nginx software
 sudo apt-get -y upgrade
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-# Nginx should listen on port 80
-sudo sed -i 's/^\(listen 80;\)/\1/' /etc/nginx/sites-available/default
+# Nginx should list on port 80
+sudo sed -i 's/^\(listen 80;\)/\1' /etc/nginx/site-avaiable/default
 
-# Create HTML page with 'hello world'
+
+# create hmtl page with 'hello world'
 echo "Hello World!" | sudo tee /var/www/html/index.html
-echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+echo "Hello World!" | sudo tee /usr/share/nginx/html.index
 
-# Configure the nginx redirection
-redirect_me="location /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;\n\t}\n"
-path="/etc/nginx/sites-enabled/default"
 
-sed -i "/^\tlocation \/ {/i $redirect_me" ${path}
+# configure the nginx redirection
+echo "  location /redirect_me {" | sudo tee -a /etc/nginx/sites-available/default
+echo "      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;" | sudo tee -a /etc/nginx/sites-available/default
+echo "}" | sudo tee -a /etc/nginx/sites-available/default
 
-# Restart service
 sudo service nginx restart
