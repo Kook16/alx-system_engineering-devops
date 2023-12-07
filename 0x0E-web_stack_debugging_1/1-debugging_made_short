@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # a Bash script that configures a server
 
-apt-get update
-apt-get install -y nginx
-service nginx start
+# Configure Nginx to use port 80
+sed -i 's/listen [0-9]\+/listen 80/' /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply the changes
+service nginx restart
