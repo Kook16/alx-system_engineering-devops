@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # a Bash script that configures a server
 
-apt-get update
-apt-get install -y nginx
+apt-get update &> /dev/null
+apt-get install -y nginx &> /dev/null
 service nginx start
