@@ -1,6 +1,15 @@
-# install flask from pip3
-package { 'Flask':
-  ensure   => '2.1.0',
-  provider => 'pip3',
-  require  => Package['werkzeug'],
+# Install flask using pip3
+
+class install_flask {
+  package { 'python3-pip':
+    ensure => 'installed',
+  }
+
+  exec { 'install_flask':
+    command     => '/usr/bin/pip3 install Flask==2.1.0',
+    path        => '/usr/local/bin',
+    refreshonly => true,
+  }
 }
+
+include install_flask
