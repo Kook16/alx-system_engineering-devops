@@ -7,7 +7,7 @@ information_printer () {
 }
 
 if [ "$#" -eq 2 ]; then
-	info_printer "$1" "$2"
+	information_printer "$1" "$2"
 else
 	subs=("www" "lb-01" "web-01" "web-02")
 	for domain in "${subs[@]}"; do
