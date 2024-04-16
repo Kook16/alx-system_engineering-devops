@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
-# ---
+# a script to mod server config to add redirect url
 
-# install the nginx software
+# upgrade services
 sudo apt-get -y upgrade
 sudo apt-get -y update
+
+# install nginx
 sudo apt-get -y install nginx
 
-# Nginx should list on port 80
-# sudo sed -i 's/^\(listen 80;\)/\1' /etc/nginx/sites-avaiable/default
-
-
-# create hmtl page with 'hello world'
+# setup root page
 echo "Hello World!" | sudo tee /var/www/html/index.html
-echo "Hello World!" | sudo tee /usr/share/nginx/html.index
-
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 
 # add redirect using sed -i
 redirect_me="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;\n\t\t}\n"

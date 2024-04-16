@@ -9,7 +9,7 @@ echo "frontend http
         default_backend web_backend
     backend web_backend
         balance roundrobin
-        server 251454-web-01 54.236.12.223:80 check
-        server 251454-web-02 100.25.3.187:80 check " >> /etc/haproxy/haproxy.cfg
+        server 251454-web-01 54.174.69.148:80 check
+        server 251454-web-02 18.204.20.114:80 check " >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
