@@ -1,51 +1,35 @@
 #!/usr/bin/python3
-'''Retrieve data'''
+"""a Python script that, using this REST API, for a given employee ID,
+    returns information about his/her TODO list progress
+"""
 import requests
-from sys import argv
+from sys import argv as av
 
 
-def validate_input(args):
-    '''Validate the input'''
-    if len(args) < 2:
-        print("Usage: python3 fabfile.py <user_id>")
-        exit(1)
-    try:
-        user_id = int(args[1])
-        return user_id
-    except ValueError:
-        print(f"{args[1]} must be an integer")
-        exit(1)
+def getData():
+    """get and display required data
+    """
+    id = av[1]
+    uri = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id)
+    resp = requests.get(uri).json()
 
+    uri = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
+    employee = (requests.get(uri).json())
+    name = employee.get("name")
 
-def getDate():
-    '''
-    Get the data from the API'''
+    tasks = []
+    total, completed = 0, 0
+    for task in resp:
+        total += 1
+        if task.get("completed") is True:
+            tasks.append(task.get("title"))
+            completed += 1
 
-    user_id = validate_input(argv)
-
-    url = "https://jsonplaceholder.typicode.com/todos/"
-    url2 = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-
-    params = {"userId": user_id}
-    response = requests.get(url, params=params)
-    num_todos = 0
-    num_com_todos = 0
-    todos = ""
-
-    todos = response.json()
-    num_todos = len(todos)
-    for todo in todos:
-        if todo.get("completed"):
-            num_com_todos += 1
-
-    response2 = requests.get(url2)
-    user = response2.json()
-    print(f"Employee {user.get('name')} is done with\
- tasks({num_com_todos}/{num_todos})")
-    for todo in todos:
-        if todo.get("completed"):
-            print(f"{todo.get('title')}")
+    print("Employee {} is done with tasks({}/{}):".format(name, completed,
+                                                          total))
+    for tsk in tasks:
+        print('\t {}'.format(tsk))
 
 
 if __name__ == "__main__":
-    getDate()
+    getData()
