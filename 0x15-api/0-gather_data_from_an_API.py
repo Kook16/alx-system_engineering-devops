@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''Retrieve data'''
 import requests
 from sys import argv
 

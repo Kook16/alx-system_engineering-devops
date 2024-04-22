@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+'''JSON format'''
 import json
 import requests
 from sys import argv
