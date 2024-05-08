@@ -7,27 +7,26 @@ def number_of_subscribers(subreddit):
     '''returns the number of subscribers (not active users,
     total subscribers) for a given subreddit'''
     if subreddit is None or type(subreddit) is not str:
-        return 0
+        print(None)
 
-    headers = {
-        'User-Agent': 'VUTHhzWkxrTG56djBsR3dhN',
-    }
+    headers = {'User-Agent': 'VUTHhzWkxrTG56djBsR3dhN'}
+    parameters = {'limit': 10}
 
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
 
+    response = requests.get(url, headers=headers, params=parameters,
+                            allow_redirects=False)
     try:
-        response = requests.get(url, headers=headers)
-        if response.status_code == 404:
-            return 0
+        if response.status_code >= 400:
+            print(None)
+            return
+
         data = response.json()
-        # print(dat
-        # if data.status >= 400:
-        #     return 0
+        if data is None:
+            print(None)
 
-        subs = data.get('data').get('subscribers')
+        posts = data.get('data').get('children')
 
-        return subs if subs is not None else 0
-
-    except requests.exceptions.RequestException as e:
-        print(e)
-        return 0
+        [print(post.get('data').get('title')) for post in posts]
+    except Exception:
+        print(None)
