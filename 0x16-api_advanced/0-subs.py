@@ -2,6 +2,7 @@
 '''API MODULE'''
 import requests
 
+
 def number_of_subscribers(subreddit):
     '''returns the number of subscribers (not active users,
     total subscribers) for a given subreddit'''

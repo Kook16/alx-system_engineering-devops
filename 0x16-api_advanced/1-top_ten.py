@@ -2,9 +2,11 @@
 '''API MODULE'''
 import requests
 
+
 def top_ten(subreddit):
-    '''a function that queries the Reddit API and prints the titles of the first
-    10 hot posts listed for a given subreddit.'''
+    '''a function that queries the Reddit API
+    and prints the titles of the first 10 hot posts
+    listed for a given subreddit.'''
     if subreddit is None or type(subreddit) is not str:
         print(None)
 
