@@ -1,3 +1,5 @@
+#/usr/bin/python3
+'''API MODULE'''
 import requests
 
 def top_ten(subreddit):
